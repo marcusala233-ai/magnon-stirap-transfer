@@ -1,0 +1,25 @@
+\section{Model and Adiabatic Protocol}
+
+We consider a hybrid quantum architecture comprising two superconducting transmon qubits coupled to a ferrimagnetic waveguide (YIG) acting as a quantum bus. The system is described by the Tavis-Cummings Hamiltonian within the Rotating Wave Approximation (RWA):
+
+\begin{equation}
+    \hat{H}(t) = \hbar \sum_{j=1,2} g_j(t) (\hat{\sigma}_j^+ \hat{a} + \hat{\sigma}_j^- \hat{a}^\dagger),
+\end{equation}
+
+where $\hat{a}$ is the annihilation operator for the magnonic mode (Kittel mode), and $\hat{\sigma}_j^+$ creates an excitation in the $j$-th qubit. The coupling strengths $g_j(t)$ are dynamically tunable via the qubits' frequency modulation.
+
+To circumvent the fast magnonic decay rate $\kappa$, we employ a Stimulated Raman Adiabatic Passage (STIRAP) protocol. The system possesses a dark state eigenstate $|\psi_D(t)\rangle$ with zero eigenvalue, which contains no magnonic component:
+
+\begin{equation}
+    |\psi_D(t)\rangle = \cos\Theta(t)|100\rangle - \sin\Theta(t)|001\rangle,
+\end{equation}
+
+where the mixing angle is defined by $\tan\Theta(t) = g_1(t)/g_2(t)$. By applying the counter-intuitive pulse sequence (Stokes pulse $g_2$ precedes Pump pulse $g_1$), we adiabatically rotate the state from $|100\rangle$ (Qubit 1 excited) to $|001\rangle$ (Qubit 2 excited).
+
+The dynamics of the open quantum system, including the crucial magnonic dissipation, are governed by the Lindblad master equation:
+
+\begin{equation}
+    \dot{\rho} = -\frac{i}{\hbar}[\hat{H}(t), \rho] + \kappa \mathcal{D}[\hat{a}]\rho + \sum_{j=1,2} \gamma_j \mathcal{D}[\hat{\sigma}_j^-]\rho.
+\end{equation}
+
+Our numerical simulations (Fig. 3) reveal that under the condition $\Omega_{eff} \gg \dot{\Theta}$, the maximum population in the magnon mode remains suppressed below $0.3\%$ throughout the transfer, rendering the protocol topologically immune to the waveguide's damping rate $\kappa$.
